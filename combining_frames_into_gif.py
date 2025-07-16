@@ -27,6 +27,6 @@ def create_gif(image_folder, output_path, duration=50):
 
 
 # Пример использования
-image_folder = 'output_frames'  # Папка с изображениями
-output_gif = 'output.gif'  # Имя выходного файла
+image_folder = 'source'  # Папка с изображениями
+output_gif = '1output.gif'  # Имя выходного файла
 create_gif(image_folder, output_gif, duration=50)

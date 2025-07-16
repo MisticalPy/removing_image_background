@@ -1,10 +1,29 @@
 from PIL import Image
 from rembg import remove
+import os
 
-input_img = '1c3f6f9d-8ab3-4066-b7db-84e9d7542163.jpeg'
-output_img = 'done.png'
 
-open_image = Image.open(input_img)
-output = remove(open_image)
+def remove_img_background(name_file):
+    input_img = f'output_frames/{name_file}'
+    output_img = f'source/1{name_file}'
 
-output.save(output_img)
+    open_image = Image.open(input_img)
+    output = remove(open_image)
+
+    output.save(output_img)
+
+
+def iter_files_in_folder(folder_path):
+    """
+    Итерируется по всем файлам в указанной папке.
+
+    Args:
+      folder_path: Путь к папке.
+    """
+    for filename in os.listdir(folder_path):
+        remove_img_background(filename)
+
+
+# Пример использования:
+folder_path = "./output_frames"  # Замените на путь к вашей папке
+iter_files_in_folder(folder_path)
