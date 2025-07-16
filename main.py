@@ -1,18 +1,10 @@
-# Requires "requests" to be installed (see https://pypi.org/project/requests/)
-import requests
+from PIL import Image
+from rembg import remove
 
-response = requests.post(
-    'https://api.pixian.ai/api/v2/remove-background',
-    files={'gif': open('Lbg3.gif', 'rb')},
-    data={
-        'test': 'true'
-    },
-    auth=('pxn2ed8xamq8f9c',
-          'sfj3ao1ngou6jpjmj1gv32m2vueev9s2m7i4lenbpr8g50vg4e22')
-)
-if response.status_code == requests.codes.ok:
-    # Save result
-    with open('pixian_result1.gif', 'wb') as out:
-        out.write(response.content)
-else:
-    print("Error:", response.status_code, response.text)
+input_img = '1c3f6f9d-8ab3-4066-b7db-84e9d7542163.jpeg'
+output_img = 'done.png'
+
+open_image = Image.open(input_img)
+output = remove(open_image)
+
+output.save(output_img)
