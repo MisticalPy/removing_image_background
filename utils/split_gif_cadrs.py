@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 
-def split_gif(gif_path, output_dir):
+def split_gif(gif_path, output_dir='output_frames'):
     """
     Разбивает GIF-файл на отдельные кадры и сохраняет их в указанную директорию.
 
@@ -34,9 +34,3 @@ def split_gif(gif_path, output_dir):
         print(f"Ошибка при сохранении кадра: {e}")
 
     print(f"GIF успешно разделен на кадры в {output_dir}")
-
-
-# Пример использования:
-gif_file = "HDoX.gif"
-output_directory = "output_frames"
-split_gif(gif_file, output_directory)

@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 
-def create_gif(image_folder, output_path, duration=50):
+def create_gif(output_path, image_folder='source', duration=50):
     """
     Создает GIF-анимацию из изображений в указанной папке.
 
@@ -22,11 +22,7 @@ def create_gif(image_folder, output_path, duration=50):
         images[0].save(output_path, save_all=True,
                        append_images=images[1:], duration=duration, loop=0)
         print(f"GIF создан: {output_path}")
+        os.rmdir('output_frames')
+        os.rmdir('source')
     else:
         print(f"В папке {image_folder} не найдены изображения.")
-
-
-# Пример использования
-image_folder = 'source'  # Папка с изображениями
-output_gif = '2output.gif'  # Имя выходного файла
-create_gif(image_folder, output_gif, duration=50)
