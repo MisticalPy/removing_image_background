@@ -1,5 +1,6 @@
 from PIL import Image
 import os
+from shutil import rmtree
 
 
 def create_gif(output_path, image_folder='source', duration=50):
@@ -22,7 +23,11 @@ def create_gif(output_path, image_folder='source', duration=50):
         images[0].save(output_path, save_all=True,
                        append_images=images[1:], duration=duration, loop=0)
         print(f"GIF создан: {output_path}")
-        os.rmdir('output_frames')
-        os.rmdir('source')
+        try:
+            rmtree('output_frames')
+            rmtree('source')
+            print('папки удалены')
+        except Exception as e:
+            print('ошибка при удаление папок')
     else:
         print(f"В папке {image_folder} не найдены изображения.")
